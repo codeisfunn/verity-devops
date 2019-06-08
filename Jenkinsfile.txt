@@ -31,7 +31,7 @@ pipeline {
 		stage('Static Code Analysis') {
             steps {
 			 script {
-          scannerHome = tool 'sonar-scanner'
+          scannerHome = "/var/jenkins_home/tools/hudson.plugins.sonar.SonarRunnerInstallation" //tool 'sonar-scanner'
         }
 				withSonarQubeEnv('mySonarScanner')
 				{
