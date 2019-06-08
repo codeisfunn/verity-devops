@@ -17,7 +17,29 @@ pipeline {
 		
 		// *****ALL CODE TO BE ADDED BELOW THIS COMMENT*****
 		
+	//Code starts for stage Compile
+		stage('Compile') {
+            steps {
+                sh 'mvn compile'
+            }
+        }
+		//Code Ends for stage Compile
 		
+		
+		
+		//Code starts for stage Static Code Analysis
+		stage('Static Code Analysis') {
+            steps {
+			 script {
+          scannerHome = tool 'sonar-scanner'
+        }
+				withSonarQubeEnv('My SonarQube Server')
+				{
+				sh "${scannerHome}/bin/sonar-scanner"
+				}
+			}
+		}
+		//Code ends for stage Static Code Analysis	
 		
 		
 		
